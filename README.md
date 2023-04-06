@@ -13,8 +13,7 @@
 ### 1、智能纠错
 #### 调用示例
 ```java
-Xiezuocat xiezuocat = new Xiezuocat();
-xiezuocat.setSecretKey("XXX");
+Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
 String result = xiezuocat.check("{\"texts\":[\"哈哈哈。我天今吃了一顿饭\",\"我想念十分赵忠祥。嘿嘿嘿。\"]}");
 System.out.println(result);
 ```
@@ -62,8 +61,7 @@ System.out.println(result);
 ### 2、智能改写
 ##### 调用示例
 ```java
-Xiezuocat xiezuocat = new Xiezuocat();
-xiezuocat.setSecretKey("XXX");
+Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
 String result = xiezuocat.rewrite("{\"items\":[\"一般\"], \"level\": \"middle\"}");
 ```
 ##### 返回结果
@@ -80,8 +78,7 @@ String result = xiezuocat.rewrite("{\"items\":[\"一般\"], \"level\": \"middle\
 #### 创建生成任务
 ##### 调用示例
 ```java
-Xiezuocat xiezuocat = new Xiezuocat();
-xiezuocat.setSecretKey("XXX");
+Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
 JSONObject postData = new JSONObject();
 postData.put("type", "Step");
 postData.put("title", "飞机");
@@ -103,7 +100,8 @@ System.out.println(result);
 #### 获取生成结果
 ##### 调用示例
 ```java
-String docId = "xxxxx"; // 此处docId为第一步生成的结果
+Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
+String docId = "3f8c9722-8683-4f93-8745-26cef524ee70"; // 此处docId为第一步生成的结果
 String result = xiezuocat.getGenerateResult(docId);
 System.out.println(result);
 ```
@@ -123,11 +121,15 @@ System.out.println(result);
 ### 4、单点登录签名算法
 ##### 调用示例
 ```java
-Xiezuocat xiezuocat = new Xiezuocat();
-xiezuocat.setSecretKey("XX");
-String result = xiezuocat.getSSOSignature("xxx", "xx", "a");
+Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
+String result = xiezuocat.getSSOSignature({your-appId}, {your-uid});
 ```
 ##### 返回结果
 ```json
 eyJzaWduIjoiMjNkZDA2ZDJjOWUyN2M1MGY2OWQyMTU2MGY5ZWZhY2I2NTRiMTg4MWRkNjZhNjE3ZTViYzJmZGUxMTJkZjA2NiIsInVpZCI6ImEiLCJhcHBJZCI6Inh4eCIsInRpbWVzdGFtcCI6IjE2ODA1MDIwMzQ1MzYifQ==
+```
+##### 拿到签名之后访问下述URL即可登录写作猫
+```js
+// p为签名算法生成的结果
+https://xiezuocat.com/api/open/login?p=eyJzaWduIjoiMjNkZDA2ZDJjOWUyN2M1MGY2OWQyMTU2MGY5ZWZhY2I2NTRiMTg4MWRkNjZhNjE3ZTViYzJmZGUxMTJkZjA2NiIsInVpZCI6ImEiLCJhcHBJZCI6Inh4eCIsInRpbWVzdGFtcCI6IjE2ODA1MDIwMzQ1MzYifQ==
 ```

@@ -97,14 +97,14 @@ public class Xiezuocat {
     }
 
 
-    public String getSSOSignature(String appId, String secretKey, String id) {
+    public String getSSOSignature(String appId, String uid) {
         String timestamp=String.valueOf(new Date().getTime());//时间戳
         Map<String,Object> paraMap =new HashMap<>();
         paraMap.put("appId", appId);
-        paraMap.put("uid", id);
+        paraMap.put("uid", uid);
         paraMap.put("timestamp", timestamp);
         //签名字符串
-        String sign = SM3SignatureUtil.signatureSM3(paraMap,secretKey);
+        String sign = SM3SignatureUtil.signatureSM3(paraMap, this.secretKey);
         paraMap.put("sign", sign);
         try {
             String base64EncodedString = Base64.getEncoder().encodeToString(JSON.toJSON(paraMap).toString().getBytes("utf-8"));
