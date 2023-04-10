@@ -1,5 +1,6 @@
 # metasota-xiezuocat-java
-对智能纠错、智能改写、AI写作、单点登录签名算法进行封装
+对智能纠错、智能改写、AI写作、单点登录签名算法进行封装<br />
+关于具体接口的调用方法与参数说明，请访问[写作猫API文档中心](https://apidocs.xiezuocat.com/guide/)
 ## 一、maven引入
 ```xml
 <dependency>
