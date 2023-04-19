@@ -6,7 +6,7 @@
 <dependency>
     <groupId>com.xiezuocat</groupId>
     <artifactId>metasota-xiezuocat-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -15,7 +15,7 @@
 #### 调用示例
 ```java
 Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
-String result = xiezuocat.check("{\"texts\":[\"哈哈哈。我天今吃了一顿饭\",\"我想念十分赵忠祥。嘿嘿嘿。\"]}");
+String result = xiezuocat.check("{\"texts\":[\"河北省赵县的洨河上，有一座世界文明的石拱桥，叫安济桥，又叫赵州桥。\", \"它是隋朝的石匠李春涉及和参加建造的，到现在已经有一千三百多年了。\"]}");
 System.out.println(result);
 ```
 #### 返回结果
@@ -26,35 +26,26 @@ System.out.println(result);
   "data" : null,
   "alerts" : [ [ {
     "alertType" : 4,
-    "alertMessage" : "建议用“今天”替换“天今”。",
-    "sourceText" : "天今",
-    "replaceText" : "今天",
-    "start" : 5,
-    "end" : 6,
-    "errorType" : 3,
-    "advancedTip" : true
-  }, {
-    "alertType" : 2,
-    "alertMessage" : "根据段落，句子应已完结，句尾建议添加句号",
-    "sourceText" : "饭",
-    "replaceText" : "。",
-    "start" : 11,
-    "end" : 11,
-    "errorType" : 2,
+    "alertMessage" : "建议用“闻名”替换“文明”。",
+    "sourceText" : "文明",
+    "replaceText" : "闻名",
+    "start" : 15,
+    "end" : 16,
+    "errorType" : 1,
     "advancedTip" : false
   } ], [ {
     "alertType" : 4,
-    "alertMessage" : "建议用“十分想念”替换“想念十分”。",
-    "sourceText" : "想念十分",
-    "replaceText" : "十分想念",
-    "start" : 1,
-    "end" : 4,
-    "errorType" : 3,
+    "alertMessage" : "建议用“设计”替换“涉及”。“涉及”指关联到，牵涉到。“设计”指根据一定要求﹐对某项工作预先制定图样﹑方案。",
+    "sourceText" : "涉及",
+    "replaceText" : "设计",
+    "start" : 9,
+    "end" : 10,
+    "errorType" : 1,
     "advancedTip" : false
   } ] ],
   "checkLimitInfo" : {
-    "checkWordCountLeftToday" : "997295",
-    "totalCheckWordCountLeft" : "997295",
+    "checkWordCountLeftToday" : "997085",
+    "totalCheckWordCountLeft" : "997084",
     "expireDate" : "2024-02-02 00:00:00"
   }
 }
@@ -63,15 +54,15 @@ System.out.println(result);
 ##### 调用示例
 ```java
 Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
-String result = xiezuocat.rewrite("{\"items\":[\"一般\"], \"level\": \"middle\"}");
+String result = xiezuocat.rewrite("{\"items\":[\"河北省赵县的洨河上，有一座世界文明的石拱桥，叫安济桥，又叫赵州桥。它是隋朝的石匠李春涉及和参加建造的，到现在已经有一千三百多年了。\"], \"level\": \"middle\"}");
 ```
 ##### 返回结果
 ```json
 {
   "errcode" : 0,
   "errmsg" : null,
-  "items" : [ "普通" ],
-  "stat" : "997268"
+  "items" : [ "河北省赵县境内，有一座名为“安济桥”的“赵州桥”，是一座举世闻名的“世界文化遗产”。这座桥由李春参与修建，距今已有1300年之久。" ],
+  "stat" : "997020"
 }
 ```
 
@@ -82,7 +73,7 @@ String result = xiezuocat.rewrite("{\"items\":[\"一般\"], \"level\": \"middle\
 Xiezuocat xiezuocat = new Xiezuocat({your-secretKey});
 JSONObject postData = new JSONObject();
 postData.put("type", "Step");
-postData.put("title", "飞机");
+postData.put("title", "仿生人会梦见电子羊吗");
 postData.put("length", "default");
 String result = xiezuocat.generate(JSON.toJSONString(postData));
 System.out.println(result);
@@ -113,9 +104,9 @@ System.out.println(result);
   "errMsg" : "success",
   "data" : {
     "status" : "FINISHED",
-    "result" : "飞机\n飞机，是指在地面起飞、下降或到达预定地点的交通工具。飞机是人类第一个发明的交通工具，它是人类在太空中的飞行器。在近代，由于各种原因造成飞机在航空上的使用非常有限。在二十世纪初，欧洲和美国人对航空技术有了更深刻的认识和了解。德国人埃米尔·赫希曼于1853年首先发明了世界上第一架喷气式飞机--“喷气飞机”（Airbus），并提出了“飞行概念”及“飞行规则”。\n飞机简介\n普通飞机是靠自身携带或者外部电源驱动，而飞机是依靠外部动力起飞、降落甚至飞行。普通飞机只有机翼，不具有机翼上的动力装置；普通飞机可以飞得很高，但是在降落时会遇到很大困难；普通飞机不能像汽车那样在地面上进行长时间起降，而普通的汽车是在地面上行驶；也不能象直升机一样在空中进行快速升降和转弯。但是它可以向天空中起飞、降落或者飞行，并且有许多优点和缺点。如：速度快、安全性高，续航时间长，价格便宜，便于携带等等。\n航空分类\n飞机的分类根据使用飞机的目的、用途、性能，可以分为民用航空客机、军用航空轰炸机、军用运输机和战略弹道导弹运载器四类。民用航空客机：包括民航客机和军用客机两种，其结构与一般民用客机基本相同，主要有螺旋桨飞机和喷气式飞机两种。军用军机：是以军事目的为主，如轰炸、反恐等。战略弹道导弹运载器：主要有洲际导弹运载器（洲际弹道导弹的发射平台称为航母）、常规运载火箭运载器（如航天飞机及其搭载的各种科学实验仪器）、战略导弹发射平台（包括常规运载火箭）以及各种新型运载器。\n飞行规则\n飞机的飞行规则主要是指航空器飞行过程中应当遵守的规定。根据国际民航组织（ICAO）制定的《航空器飞行规则》，航空公司应严格遵守以下要求：\n1.对飞机进行定期检查；\n2.在使用期间，不得因飞机故障或其他原因，使飞机停止运行或处于应急情况下；\n3.在发现有危险时及时采取措施，防止事故发生。\n发展历程\n飞机，人类最早的交通工具之一。从20世纪初开始，飞机的制造和飞行技术在世界范围内都得到了飞速发展。\n",
-    "wordCount" : "799",
-    "restCount" : "138374"
+    "result" : "仿生人会梦见电子羊吗\n如果说仿生人是人类智慧的结晶，那么仿生人究竟是什么呢？简单地说，仿生人就是通过模仿人类特征，达到和人类一样的感知、思维能力的机器。随着人工智能技术的发展，很多人工智能装置不断问世，比如仿生人。从字面意思上理解可能很简单，但它和普通人类有什么不同呢？我们都知道自然界中动物是用四肢行走、说话、唱歌等方式进行交流的，而如果我们让动物来做类似的事情呢？显然是不现实的。\n1.人和动物的区别\n人是一个独立的生物，从解剖学上看，人不是一个整体的存在，它有两个不同的部分：躯体和大脑。人是由两个部分组成。除了身体之外，大脑是人类思维的中心，它负责记忆、思考等工作。而人体则由四根神经和两根血管组成，这四根神经分别负责身体四肢以及全身。这就造成了人类只能感知到有限的信息（感知信息和理解信息），而仿生人则能更全面地感知、思考这些信息。\n2.仿生人的大脑\n仿生人的大脑，是从动物大脑中模仿出来的，但不属于自然动物。比如德国仿生人的大脑，它与人脑结构极为相似，但它却有着人类大脑无法比拟的优势。仿生人的大脑分为三个部分：视觉皮层、触觉皮层。它的每一个部分都是一个微型系统，主要负责处理视觉和听觉信号。仿生人利用这一系统对图像进行分析和判断后输出指令。目前这一系统已经成功应用于临床手术中，能够完成许多复杂动作：抓取物体、识别形状、寻找物品，甚至识别人本身等。\n3.仿生人的大脑是如何工作的\n仿生人的大脑其实很简单，只有四个小的芯片，其中一个用于处理来自各个传感器的信号。这就是为什么在大脑工作时，它能够准确地感知周围环境的变化。在这里我们就不介绍仿生人的大脑是如何工作的了，它也只能模拟动物，却不能完全地模拟人。\n4.仿生人是否会梦见电子羊\n有很多关于仿生人梦见电子羊的传闻，比如：仿生人看到了电子羊的身体，以为它是个机械人；仿生人梦见了电子羊，于是就将它当成了人类；仿生人梦见了电子羊，结果就真的变成了人类；如果说仿生人有什么特征的话，那就是感知能力和思维方式。虽然这些传闻都是以讹传讹，但我们可以看到一个事实——很多事情并非想象中那么简单！其实在自然界中，动物也经常做一些类似的梦。比如：动物会做一些梦，如狼会做梦等等。但是仿生人却不一样，我们看到的不是真实的自己；而是在脑海中做出来的梦境；而这一切都与仿生人所处环境和身体构造有关。\n",
+    "wordCount" : "948",
+    "restCount" : "118683"
   }
 }
 ```

@@ -32,15 +32,15 @@
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>xiezuocat-maven</id> <!-- 此处id与setting.xml中的服务id保持一致 -->
-            <name>oss Staging Repository</name>
+            <id>xiezuocat-maven</id>
+            <name>Release</name>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
     <groupId>com.xiezuocat</groupId>
     <artifactId>metasota-xiezuocat-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,8 +55,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <!--生产源码文件插件-->
